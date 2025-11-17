@@ -6,6 +6,6 @@ class UmlDisplayParameters(Enum):
     """
     """
 
-    WITH_PARAMETERS    = 'DisplayParameters'
-    WITHOUT_PARAMETERS = 'DoNotDisplayParameters'
-    UNSPECIFIED        = 'Unspecified'
+    DISPLAY_PARAMETERS        = 'Display Parameters'
+    DO_NOT_DISPLAY_PARAMETERS = 'Do Not Display Parameters'
+    UNSPECIFIED               = 'Unspecified'
