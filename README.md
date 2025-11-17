@@ -6,7 +6,7 @@
 
 # Introduction
 
-
+This project is the data model for the [UML Shapes module.](https://github.com/hasii2011/umlshapes)
 
 # Installation
 
