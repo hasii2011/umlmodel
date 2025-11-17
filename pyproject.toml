@@ -19,7 +19,9 @@ classifiers = [
   "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 
-dependencies = []
+dependencies = [
+    'human_id==0.2.0',
+]
 
 [project.optional-dependencies]
 test = [

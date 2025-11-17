@@ -7,7 +7,7 @@ from tests.ProjectTestBase import ProjectTestBase
 from umlmodel.UmlClass import UmlClass
 from umlmodel.UmlLinkedObject import UmlLinkedObject
 from umlmodel.UmlObject import UmlObject
-from umlmodel.UmlObject import infiniteSequence
+from umlmodel.UmlObject import uniqueIdentifier
 
 from umlmodel.enumerations.UmlDisplayParameters import UmlDisplayParameters
 from umlmodel.enumerations.UmlStereotype import UmlStereotype
@@ -58,17 +58,17 @@ class TestUmlClass(ProjectTestBase):
 
     def testIdIncrements(self):
 
-        UmlObject.idGenerator = infiniteSequence()
+        UmlObject.idGenerator = uniqueIdentifier()
         fakeClass: UmlClass = UmlClass(name='FakeClass')
 
         self.assertEqual('FakeClass', fakeClass.name, '')
-        pyutClass: UmlClass = UmlClass(name='CheckPyutObject')
+        pyutClass1: UmlClass = UmlClass(name='CheckPyutObject')
 
-        self.assertTrue(pyutClass.id == 1)
-        self.assertTrue(pyutClass.fileName == '')
+        self.assertTrue(pyutClass1.id != '')
+        self.assertTrue(pyutClass1.fileName == '')
 
-        pyutClass = UmlClass(name='BumpId')
-        self.assertTrue(pyutClass.id == 2)
+        pyutClass2: UmlClass = UmlClass(name='BumpId')
+        self.assertTrue(pyutClass2.id != pyutClass1.id)
 
     def testLinkedObject(self):
 
@@ -76,6 +76,7 @@ class TestUmlClass(ProjectTestBase):
 
         self.assertTrue(len(pyutLinkedObject.parents) == 0, 'No parents at instantiation')
         self.assertTrue(len(pyutLinkedObject.links) == 0, 'No links at instantiation')
+
 
 
 def suite() -> TestSuite:

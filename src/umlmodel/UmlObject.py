@@ -4,20 +4,21 @@ from typing import Generator
 
 from dataclasses import dataclass
 
+from human_id import generate_id
 
-def infiniteSequence() -> Generator[int, None, None]:
-    num = 0
+
+def uniqueIdentifier() -> Generator[str, None, None]:
+
     while True:
-        yield num
-        num += 1
+        yield generate_id()
 
 
 @dataclass
 class UmlObject:
-    idGenerator: ClassVar = infiniteSequence()
+    idGenerator: ClassVar[Generator[str, None, None]] = uniqueIdentifier()
 
     name:     str = ''
-    id:       int = 0
+    id:       str = ''
     fileName: str = ''
 
     def __post_init__(self):
