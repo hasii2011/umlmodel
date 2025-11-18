@@ -3,7 +3,7 @@ from unittest import TestSuite
 from unittest import main as unitTestMain
 
 from tests.ProjectTestBase import ProjectTestBase
-from umlmodel.UmlParameter import UmlParameter
+from umlmodel.Parameter import Parameter
 
 from umlmodel.UmlType import UmlType
 
@@ -18,7 +18,7 @@ class TestUmlParameter(ProjectTestBase):
         super().tearDown()
 
     def testFullString(self):
-        umlParameter: UmlParameter = UmlParameter(name='Ozzee', type=UmlType('float'), defaultValue='1.0')
+        umlParameter: Parameter = Parameter(name='Ozzee', type=UmlType('float'), defaultValue='1.0')
 
         expectedValue: str = 'Ozzee: float = 1.0'
         actualValue:   str = umlParameter.__str__()
@@ -26,14 +26,14 @@ class TestUmlParameter(ProjectTestBase):
         self.assertEqual(expectedValue, actualValue, 'Full string representation has changed')
 
     def testIndividualAttributes(self):
-        umlParameter: UmlParameter = UmlParameter(name='Ozzee', type=UmlType('float'), defaultValue='1.0')
+        umlParameter: Parameter = Parameter(name='Ozzee', type=UmlType('float'), defaultValue='1.0')
 
         self.assertEqual('Ozzee', umlParameter.name, 'Parameter name not correct')
         self.assertEqual('1.0', umlParameter.defaultValue, 'default value not set correctly')
         self.assertEqual(UmlType('float'), umlParameter.type, 'Type not set correctly')
 
     def testNoDefaultValue(self):
-        umlParameter: UmlParameter = UmlParameter(name='Ozzee', type=UmlType('float'))
+        umlParameter: Parameter = Parameter(name='Ozzee', type=UmlType('float'))
 
         expectedValue: str = 'Ozzee: float'
         actualValue:   str = umlParameter.__str__()
@@ -42,7 +42,7 @@ class TestUmlParameter(ProjectTestBase):
 
     def testNoTypeOrDefaultValue(self):
 
-        umlParameter: UmlParameter = UmlParameter(name='Ozzee')
+        umlParameter: Parameter = Parameter(name='Ozzee')
 
         expectedValue: str = 'Ozzee'
         actualValue:   str = umlParameter.__str__()
@@ -51,7 +51,7 @@ class TestUmlParameter(ProjectTestBase):
 
     def testDataClassRepr(self):
 
-        umlParameter: UmlParameter = UmlParameter(name='Ozzee', type=UmlType('float'), defaultValue='1.0')
+        umlParameter: Parameter = Parameter(name='Ozzee', type=UmlType('float'), defaultValue='1.0')
 
         expectedValue: str = 'Ozzee: float = 1.0'
         actualValue:   str = umlParameter.__repr__()

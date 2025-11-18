@@ -3,10 +3,10 @@ from unittest import TestSuite
 from unittest import main as unitTestMain
 
 from tests.ProjectTestBase import ProjectTestBase
-from umlmodel.UmlMethod import SourceCode
-from umlmodel.UmlMethod import UmlMethod
-from umlmodel.UmlMethod import UmlParameters
-from umlmodel.UmlParameter import UmlParameter
+from umlmodel.Method import SourceCode
+from umlmodel.Method import Method
+from umlmodel.Method import Parameters
+from umlmodel.Parameter import Parameter
 from umlmodel.UmlType import UmlType
 
 
@@ -15,15 +15,15 @@ class TestUmlMethod(ProjectTestBase):
     """
     def setUp(self):
         super().setUp()
-        self._pyutMethod: UmlMethod = UmlMethod(name='methodName')
+        self._pyutMethod: Method = Method(name='methodName')
 
     def tearDown(self):
         pass
 
     def testUpdateEmptyParameters(self):
 
-        pyutMethod:    UmlMethod    = UmlMethod(name='MethodToBuildUp')
-        pyutParameter: UmlParameter = UmlParameter(name='InitialParameter')
+        pyutMethod:    Method    = Method(name='MethodToBuildUp')
+        pyutParameter: Parameter = Parameter(name='InitialParameter')
 
         pyutMethod.addParameter(parameter=pyutParameter)
 
@@ -31,7 +31,7 @@ class TestUmlMethod(ProjectTestBase):
 
     def testStringMethodWithParametersRepresentation(self):
 
-        pyutMethod: UmlMethod = self._pyutMethod
+        pyutMethod: Method = self._pyutMethod
         pyutMethod.returnType = UmlType('float')
 
         pyutMethod.parameters = self._makeParameters()
@@ -44,7 +44,7 @@ class TestUmlMethod(ProjectTestBase):
 
     def testStringMethodWithoutParametersRepresentation(self):
 
-        pyutMethod:     UmlMethod = self._pyutMethod
+        pyutMethod:     Method = self._pyutMethod
         pyutMethod.returnType = UmlType('float')
 
         pyutMethod.parameters = self._makeParameters()
@@ -56,7 +56,7 @@ class TestUmlMethod(ProjectTestBase):
         self.assertEqual(expectedRepresentation, actualRepresentation, 'Oops this does not match')
 
     def testMethodSimpleParametersWithParameters(self):
-        simpleMethod: UmlMethod = self._pyutMethod
+        simpleMethod: Method = self._pyutMethod
 
         simpleMethod.parameters = self._makeSimpleParameters()
 
@@ -74,13 +74,13 @@ class TestUmlMethod(ProjectTestBase):
 
     def testStashSourceCode(self):
 
-        pyutMethod:        UmlMethod = self._generateAMethod()
+        pyutMethod:        Method = self._generateAMethod()
         expectedLineCount: int = 5
         actualLineCount:   int = len(pyutMethod.sourceCode)
         self.assertEqual(expectedLineCount, actualLineCount, 'Method source code not accurate')
 
     def testChangeSourceCode(self):
-        pyutMethod:        UmlMethod = self._generateAMethod()
+        pyutMethod:        Method = self._generateAMethod()
         #
         # This is NOT the recommended way to update the source code
         #
@@ -89,8 +89,8 @@ class TestUmlMethod(ProjectTestBase):
         actualLineCount:   int = len(pyutMethod.sourceCode)
         self.assertEqual(expectedLineCount, actualLineCount, 'Method source code not accurate')
 
-    def _generateAMethod(self) -> UmlMethod:
-        pyutMethod: UmlMethod    = UmlMethod(name='OzzeeElGatoDiablo')
+    def _generateAMethod(self) -> Method:
+        pyutMethod: Method    = Method(name='OzzeeElGatoDiablo')
 
         pyutMethod.sourceCode = SourceCode(
             [
@@ -103,23 +103,23 @@ class TestUmlMethod(ProjectTestBase):
         )
         return pyutMethod
 
-    def _makeParameters(self) -> UmlParameters:
+    def _makeParameters(self) -> Parameters:
 
-        pyutParameter1: UmlParameter  = UmlParameter(name='intParam', type=UmlType("int"), defaultValue='0')
-        pyutParameter2: UmlParameter  = UmlParameter(name='floatParam', type=UmlType("float"), defaultValue='32.0')
-        parameters:     UmlParameters = UmlParameters([pyutParameter1, pyutParameter2])
+        pyutParameter1: Parameter  = Parameter(name='intParam', type=UmlType("int"), defaultValue='0')
+        pyutParameter2: Parameter  = Parameter(name='floatParam', type=UmlType("float"), defaultValue='32.0')
+        parameters:     Parameters = Parameters([pyutParameter1, pyutParameter2])
 
         return parameters
 
-    def _makeSimpleParameters(self) -> UmlParameters:
+    def _makeSimpleParameters(self) -> Parameters:
         """
         No types, no default values
         """
-        intParameter:   UmlParameter  = UmlParameter(name='intParameter')
-        floatParameter: UmlParameter  = UmlParameter(name='floatParameter')
-        boolParameter:  UmlParameter  = UmlParameter(name='boolParameter')
+        intParameter:   Parameter  = Parameter(name='intParameter')
+        floatParameter: Parameter  = Parameter(name='floatParameter')
+        boolParameter:  Parameter  = Parameter(name='boolParameter')
 
-        parameters:     UmlParameters = UmlParameters([intParameter, floatParameter, boolParameter])
+        parameters:     Parameters = Parameters([intParameter, floatParameter, boolParameter])
 
         return parameters
 

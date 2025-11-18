@@ -4,7 +4,7 @@ from unittest import main as unitTestMain
 
 from tests.ProjectTestBase import ProjectTestBase
 
-from umlmodel.UmlUseCase import UmlUseCase
+from umlmodel.UseCase import UseCase
 
 
 class TestUmlCase(ProjectTestBase):
@@ -20,12 +20,12 @@ class TestUmlCase(ProjectTestBase):
         super().tearDown()
 
     def testInstantiation(self):
-        pyutUseCase: UmlUseCase = UmlUseCase(name='Ozzee')
+        pyutUseCase: UseCase = UseCase(name='Ozzee')
 
         self.assertIsNotNone(pyutUseCase, 'Wowza, I made it')
 
     def testInstantiationNoName(self):
-        pyutUseCase: UmlUseCase = UmlUseCase()
+        pyutUseCase: UseCase = UseCase()
 
         self.assertIsNotNone(pyutUseCase, 'Wowza, I made it')
 

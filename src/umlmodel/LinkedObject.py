@@ -6,13 +6,13 @@ from typing import Self
 from dataclasses import dataclass
 from dataclasses import field
 
-from umlmodel.UmlLink import UmlLink
-from umlmodel.UmlLink import UmlLinks
-from umlmodel.UmlObject import UmlObject
+from umlmodel.Link import Link
+from umlmodel.Link import Links
+from umlmodel.BaseAttributes import BaseAttributes
 
 
-def pyutLinksFactory() -> UmlLinks:
-    return UmlLinks([])
+def linksFactory() -> Links:
+    return Links([])
 
 
 def parentsFactory() -> List[Any]:
@@ -20,7 +20,7 @@ def parentsFactory() -> List[Any]:
 
 
 @dataclass
-class UmlLinkedObject(UmlObject):
+class LinkedObject(BaseAttributes):
     """
     An object which can be connected to another one.
 
@@ -29,7 +29,7 @@ class UmlLinkedObject(UmlObject):
     this class to have all links support.
     """
 
-    links:   UmlLinks  = field(default_factory=pyutLinksFactory, hash=False)
+    links:   Links  = field(default_factory=linksFactory, hash=False)
     parents: List[Self] = field(default_factory=parentsFactory,   hash=False)
 
     def addParent(self, parent: Self):
@@ -41,7 +41,7 @@ class UmlLinkedObject(UmlObject):
         """
         self.parents.append(parent)
 
-    def addLink(self, link: UmlLink):
+    def addLink(self, link: Link):
         """
         Add the given link to the links
 

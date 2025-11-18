@@ -11,27 +11,27 @@ from logging import getLogger
 
 from dataclasses import dataclass
 
-from umlmodel.UmlObject import UmlObject
-from umlmodel.enumerations.UmlLinkType import UmlLinkType
+from umlmodel.BaseAttributes import BaseAttributes
+from umlmodel.enumerations.LinkType import LinkType
 
 if TYPE_CHECKING:
-    from umlmodel.UmlClass import UmlClass              # noqa
-    from umlmodel.UmlNote import UmlNote                # noqa
-    from umlmodel.UmlUseCase import UmlUseCase          # noqa
-    from umlmodel.UmlSDInstance import UmlSDInstance    # noqa
-    from umlmodel.UmlActor import UmlActor              # noqa
+    from umlmodel.Class import Class              # noqa
+    from umlmodel.Note import Note                # noqa
+    from umlmodel.UseCase import UseCase          # noqa
+    from umlmodel.SDInstance import SDInstance    # noqa
+    from umlmodel.Actor import Actor              # noqa
 
 
 # Using type aliases on purpose
-LinkSource      = Union['UmlClass', 'UmlNote', 'UmlSDInstance', 'UmlActor']
-LinkDestination = Union['UmlClass', 'UmlUseCase',  'UmlSDInstance']
+LinkSource      = Union['Class', 'Note',    'SDInstance', 'Actor']
+LinkDestination = Union['Class', 'UseCase', 'SDInstance']
 
 NONE_LINK_SOURCE:      LinkSource      = cast(LinkSource, None)
 NONE_LINK_DESTINATION: LinkDestination = cast(LinkDestination, None)
 
 
 @dataclass
-class UmlLink(UmlObject):
+class Link(BaseAttributes):
     """
     A standard link between a classes or Note.
 
@@ -40,11 +40,11 @@ class UmlLink(UmlObject):
     Example:
     ```python
 
-        myLink  = UmlLink("linkName", UmlLinkType.OGL_INHERITANCE, "0", "*")
+        myLink: Link = Link("linkName", UmlLinkType.OGL_INHERITANCE, "0", "*")
     ```
     """
 
-    linkType: UmlLinkType = UmlLinkType.INHERITANCE
+    linkType: LinkType = LinkType.INHERITANCE
 
     sourceCardinality:      str  = ''
     destinationCardinality: str  = ''
@@ -54,7 +54,7 @@ class UmlLink(UmlObject):
     destination:            LinkDestination = NONE_LINK_DESTINATION
 
     # noinspection PyUnresolvedReferences
-    def __init__(self, name="", linkType: UmlLinkType = UmlLinkType.INHERITANCE,
+    def __init__(self, name="", linkType: LinkType = LinkType.INHERITANCE,
                  cardinalitySource:       str  = "",
                  cardinalityDestination:  str  = "",
                  bidirectional: bool = False,
@@ -92,4 +92,4 @@ class UmlLink(UmlObject):
         return f'("{self.name}") links from {self.source} to {self.destination}'
 
 
-UmlLinks = NewType('UmlLinks', List[UmlLink])
+Links = NewType('Links', List[Link])

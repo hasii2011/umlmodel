@@ -4,11 +4,11 @@ from logging import getLogger
 
 from dataclasses import dataclass
 
-from umlmodel.UmlLinkedObject import UmlLinkedObject
+from umlmodel.LinkedObject import LinkedObject
 
 
 @dataclass
-class UmlNote(UmlLinkedObject):
+class Note(LinkedObject):
 
     content: str = ''
 

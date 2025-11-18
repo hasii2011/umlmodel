@@ -5,53 +5,53 @@ from typing import List
 from dataclasses import dataclass
 from dataclasses import field
 
-from umlmodel.UmlModifier import UmlModifier
-from umlmodel.UmlObject import UmlObject
-from umlmodel.UmlParameter import UmlParameter
+from umlmodel.Modifier import Modifier
+from umlmodel.BaseAttributes import BaseAttributes
+from umlmodel.Parameter import Parameter
 from umlmodel.UmlType import UmlType
 
-from umlmodel.enumerations.UmlVisibility import UmlVisibility
+from umlmodel.enumerations.Visibility import Visibility
 
-SourceCode    = NewType('SourceCode',     List[str])
-UmlModifiers  = NewType('UmlModifiers', List[UmlModifier])
-UmlParameters = NewType('UmlParameters', List[UmlParameter])
+SourceCode = NewType('SourceCode', List[str])
+Modifiers  = NewType('Modifiers',  List[Modifier])
+Parameters = NewType('Parameters', List[Parameter])
 
 
-def pyutModifiersFactory() -> UmlModifiers:
-    return UmlModifiers([])
+def modifiersFactory() -> Modifiers:
+    return Modifiers([])
 
 
 def sourceCodeFactory() -> SourceCode:
     return SourceCode([])
 
 
-def parametersFactory() -> UmlParameters:
-    return UmlParameters([])
+def parametersFactory() -> Parameters:
+    return Parameters([])
 
 
 @dataclass
-class UmlMethod(UmlObject):
+class Method(BaseAttributes):
     """
     A method representation.
 
-    A PyutMethod represents a method of a UML class in Pyut. It manages its:
+    A Method instance represents a method in a UML class in the UML Diagrammer. It manages its:
 
-        - parameters (`PyutParameter`)
-        - visibility (`PyutVisibility`)
-        - modifiers (`PyutModifier`)
-        - return type (`PyutType`)
+        - parameters (`Parameter`)
+        - visibility (`Visibility`)
+        - modifiers (`Modifier`)
+        - return type (`Type`)
         - source code if reverse-engineered
         - isProperty indicates if the method is really a property
     """
-    parameters: UmlParameters = field(default_factory=parametersFactory)
-    modifiers:  UmlModifiers  = field(default_factory=pyutModifiersFactory)
+    parameters: Parameters = field(default_factory=parametersFactory)
+    modifiers:  Modifiers  = field(default_factory=modifiersFactory)
 
-    visibility: UmlVisibility  = UmlVisibility.PUBLIC
-    returnType: UmlType        = UmlType('')
-    isProperty: bool            = False
-    sourceCode: SourceCode      = field(default_factory=sourceCodeFactory)
+    visibility: Visibility  = Visibility.PUBLIC
+    returnType: UmlType     = UmlType('')
+    isProperty: bool        = False
+    sourceCode: SourceCode  = field(default_factory=sourceCodeFactory)
 
-    def addParameter(self, parameter: UmlParameter):
+    def addParameter(self, parameter: Parameter):
         """
         Add a parameter.
 
@@ -103,4 +103,4 @@ class UmlMethod(UmlObject):
         return internalRepresentation
 
 
-UmlMethods  = NewType('UmlMethods', List[UmlMethod])
+Methods  = NewType('Methods', List[Method])

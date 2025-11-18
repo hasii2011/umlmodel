@@ -5,10 +5,10 @@ from typing import NewType
 
 from dataclasses import dataclass
 
-from umlmodel.UmlClassCommon import UmlClassCommon
-from umlmodel.UmlModelTypes import ClassName
-from umlmodel.UmlModelTypes import Implementors
-from umlmodel.UmlObject import UmlObject
+from umlmodel.ClassCommon import ClassCommon
+from umlmodel.ModelTypes import ClassName
+from umlmodel.ModelTypes import Implementors
+from umlmodel.BaseAttributes import BaseAttributes
 
 
 def implementorsFactory() -> Implementors:
@@ -16,7 +16,7 @@ def implementorsFactory() -> Implementors:
 
 
 @dataclass
-class UmlInterface(UmlObject, UmlClassCommon):
+class Interface(BaseAttributes, ClassCommon):
 
     def __init__(self, name: str = ''):
         """
@@ -25,7 +25,7 @@ class UmlInterface(UmlObject, UmlClassCommon):
             name:  The interface name
         """
         super().__init__(name=name)
-        UmlClassCommon.__init__(self)
+        ClassCommon.__init__(self)
 
         self._implementors: Implementors = Implementors([])
 
@@ -53,7 +53,7 @@ class UmlInterface(UmlObject, UmlClassCommon):
         """
         ans: bool = False
 
-        if isinstance(other, UmlInterface) is False:
+        if isinstance(other, Interface) is False:
             pass
         else:
             if self.name == other.name and self.id == other.id:
@@ -67,8 +67,8 @@ class UmlInterface(UmlObject, UmlClassCommon):
         for method in self.methods:
             methodsStr = f'{methodsStr} {method} '
 
-        return f'UmlInterface {self.name} {methodsStr}'
+        return f'Interface {self.name} {methodsStr}'
 
 
-UmlInterfaces     = NewType('UmlInterfaces',     List[UmlInterface])
-UmlInterfacesDict = NewType('UmlInterfacesDict', Dict[str, UmlInterface])
+Interfaces     = NewType('Interfaces', List[Interface])
+InterfacesDict = NewType('InterfacesDict', Dict[str, Interface])

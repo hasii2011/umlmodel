@@ -4,7 +4,7 @@ from enum import Enum
 DEBUG_STEREOTYPE: bool = False
 
 
-class UmlStereotype(Enum):
+class Stereotype(Enum):
     """
     Stereotype Enumeration
     https://www.ibm.com/docs/en/rational-soft-arch/9.5?topic=elements-uml-model-element-stereotypes
@@ -39,7 +39,7 @@ class UmlStereotype(Enum):
     NO_STEREOTYPE        = 'noStereotype'
 
     @classmethod
-    def toEnum(cls, strValue: str) -> 'UmlStereotype':
+    def toEnum(cls, strValue: str) -> 'Stereotype':
         """
         Converts the input string to the appropriate stereotype
 
@@ -47,7 +47,7 @@ class UmlStereotype(Enum):
             strValue:   A string value
 
         Returns:  The stereotype enumeration;  Empty strings, multi-spaces strings,
-        invalid & None values return PyutStereotype.NO_STEREOTYPE
+        invalid & None values return Stereotype.NO_STEREOTYPE
         """
 
         if strValue is None:
@@ -59,16 +59,16 @@ class UmlStereotype(Enum):
             # noinspection SpellCheckingInspection
             match canonicalStr:
                 case 'buildcomponent':
-                    stereotype: UmlStereotype = UmlStereotype.BUILD_COMPONENT
+                    stereotype: Stereotype = Stereotype.BUILD_COMPONENT
                 case 'implementationclass':
-                    stereotype = UmlStereotype.IMPLEMENTATION_CLASS
+                    stereotype = Stereotype.IMPLEMENTATION_CLASS
                 case 'nostereotype':
-                    stereotype = UmlStereotype.NO_STEREOTYPE
+                    stereotype = Stereotype.NO_STEREOTYPE
                 case _:
-                    stereotype = UmlStereotype(canonicalStr)
+                    stereotype = Stereotype(canonicalStr)
         except (ValueError, Exception):
             if DEBUG_STEREOTYPE is True:
-                print(f'`{canonicalStr}` coerced to {UmlStereotype.NO_STEREOTYPE}')
-            stereotype = UmlStereotype.NO_STEREOTYPE
+                print(f'`{canonicalStr}` coerced to {Stereotype.NO_STEREOTYPE}')
+            stereotype = Stereotype.NO_STEREOTYPE
 
         return stereotype

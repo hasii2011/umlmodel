@@ -5,7 +5,7 @@ from enum import Enum
 from typing import cast
 
 
-class UmlVisibility(Enum):
+class Visibility(Enum):
 
     PRIVATE   = '-'
     PROTECTED = '#'
@@ -20,13 +20,13 @@ class UmlVisibility(Enum):
     @staticmethod
     def values() -> List[str]:
         retList: List[str] = []
-        for valEnum in UmlVisibility:
-            val:    UmlVisibility = cast(UmlVisibility, valEnum)
+        for valEnum in Visibility:
+            val:    Visibility = cast(Visibility, valEnum)
             retList.append(val.__str__())
         return retList
 
     @staticmethod
-    def toEnum(strValue: str) -> 'UmlVisibility':
+    def toEnum(strValue: str) -> 'Visibility':
         """
         Converts the input string to the visibility enum
         Args:
@@ -36,16 +36,16 @@ class UmlVisibility(Enum):
         """
         canonicalStr: str = strValue.lower().strip(' ')
         if canonicalStr == 'public':
-            return UmlVisibility.PUBLIC
+            return Visibility.PUBLIC
         elif canonicalStr == 'private':
-            return UmlVisibility.PRIVATE
+            return Visibility.PRIVATE
         elif canonicalStr == 'protected':
-            return UmlVisibility.PROTECTED
+            return Visibility.PROTECTED
         elif canonicalStr == '+':
-            return UmlVisibility.PUBLIC
+            return Visibility.PUBLIC
         elif canonicalStr == '-':
-            return UmlVisibility.PRIVATE
+            return Visibility.PRIVATE
         elif canonicalStr == '#':
-            return UmlVisibility.PROTECTED
+            return Visibility.PROTECTED
         else:
-            assert False, f'Warning: UmlVisibility.toEnum - Do not recognize visibility type: `{canonicalStr}`'
+            assert False, f'Warning: Visibility.toEnum - Do not recognize visibility type: `{canonicalStr}`'

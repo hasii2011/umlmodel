@@ -5,7 +5,7 @@ from unittest import main as unitTestMain
 from copy import deepcopy
 
 from tests.ProjectTestBase import ProjectTestBase
-from umlmodel.UmlInterface import UmlInterface
+from umlmodel.Interface import Interface
 
 
 class TestUmlInterface(ProjectTestBase):
@@ -24,20 +24,20 @@ class TestUmlInterface(ProjectTestBase):
 
     def testInstantiation(self):
 
-        pyutInterface: UmlInterface = UmlInterface(name='OzzeeInterface')
+        pyutInterface: Interface = Interface(name='OzzeeInterface')
 
         self.assertIsNotNone(pyutInterface.implementors, 'Ensure we can access this property')
 
     def testEquality(self):
-        pyutInterface: UmlInterface = UmlInterface(name='OzzeeInterface')
-        doppleGanger:  UmlInterface = deepcopy(pyutInterface)
+        pyutInterface: Interface = Interface(name='OzzeeInterface')
+        doppleGanger:  Interface = deepcopy(pyutInterface)
 
         self.assertTrue(pyutInterface == doppleGanger, 'Should be the same one')
 
     def testNotEqual(self):
 
-        pyutInterface1: UmlInterface = UmlInterface(name='OzzeeInterface')
-        pyutInterface2: UmlInterface = UmlInterface(name='OzzeeInterface')
+        pyutInterface1: Interface = Interface(name='OzzeeInterface')
+        pyutInterface2: Interface = Interface(name='OzzeeInterface')
 
         self.assertFalse(pyutInterface1 == pyutInterface2, 'IDs should not match')
 

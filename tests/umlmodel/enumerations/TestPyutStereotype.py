@@ -6,7 +6,7 @@ from unittest import main as unitTestMain
 
 
 from tests.ProjectTestBase import ProjectTestBase
-from umlmodel.enumerations.UmlStereotype import UmlStereotype
+from umlmodel.enumerations.Stereotype import Stereotype
 
 
 class TestUmlStereotype(ProjectTestBase):
@@ -19,50 +19,50 @@ class TestUmlStereotype(ProjectTestBase):
         pass
 
     def testBasic(self):
-        pyutStereotype: UmlStereotype = UmlStereotype.toEnum(UmlStereotype.TYPE.value)
+        pyutStereotype: Stereotype = Stereotype.toEnum(Stereotype.TYPE.value)
 
-        self.assertEqual(UmlStereotype.TYPE, pyutStereotype, 'Basic conversion failing')
+        self.assertEqual(Stereotype.TYPE, pyutStereotype, 'Basic conversion failing')
 
     def testBasicNoStereotype(self):
-        pyutStereotype: UmlStereotype = UmlStereotype.toEnum(UmlStereotype.NO_STEREOTYPE.value)
+        pyutStereotype: Stereotype = Stereotype.toEnum(Stereotype.NO_STEREOTYPE.value)
 
-        self.assertEqual(UmlStereotype.NO_STEREOTYPE, pyutStereotype, 'Basic conversion failing')
+        self.assertEqual(Stereotype.NO_STEREOTYPE, pyutStereotype, 'Basic conversion failing')
 
     def testBasicNoImplementationClass(self):
-        pyutStereotype: UmlStereotype = UmlStereotype.toEnum(UmlStereotype.IMPLEMENTATION_CLASS.value)
+        pyutStereotype: Stereotype = Stereotype.toEnum(Stereotype.IMPLEMENTATION_CLASS.value)
 
-        self.assertEqual(UmlStereotype.IMPLEMENTATION_CLASS, pyutStereotype, 'Basic conversion failing')
+        self.assertEqual(Stereotype.IMPLEMENTATION_CLASS, pyutStereotype, 'Basic conversion failing')
 
     def testEmptyString(self):
-        pyutStereotype: UmlStereotype = UmlStereotype.toEnum('')
+        pyutStereotype: Stereotype = Stereotype.toEnum('')
 
-        self.assertEqual(UmlStereotype.NO_STEREOTYPE, pyutStereotype, 'Empty string conversion failing')
+        self.assertEqual(Stereotype.NO_STEREOTYPE, pyutStereotype, 'Empty string conversion failing')
 
     def testNone(self):
-        pyutStereotype: UmlStereotype = UmlStereotype.toEnum(cast(str, None))
+        pyutStereotype: Stereotype = Stereotype.toEnum(cast(str, None))
 
-        self.assertEqual(UmlStereotype.NO_STEREOTYPE, pyutStereotype, 'Empty string conversion failing')
+        self.assertEqual(Stereotype.NO_STEREOTYPE, pyutStereotype, 'Empty string conversion failing')
 
     def testManySpaces(self):
-        pyutStereotype: UmlStereotype = UmlStereotype.toEnum('    ')
+        pyutStereotype: Stereotype = Stereotype.toEnum('    ')
 
-        self.assertEqual(UmlStereotype.NO_STEREOTYPE, pyutStereotype, 'Empty string conversion failing')
+        self.assertEqual(Stereotype.NO_STEREOTYPE, pyutStereotype, 'Empty string conversion failing')
 
     def testInvalidStereotypeCoercionToNoStereotype(self):
 
-        pyutStereotype: UmlStereotype = UmlStereotype.toEnum('dataclass')
+        pyutStereotype: Stereotype = Stereotype.toEnum('dataclass')
 
-        self.assertEqual(UmlStereotype.NO_STEREOTYPE, pyutStereotype, 'Coerced to empty')
+        self.assertEqual(Stereotype.NO_STEREOTYPE, pyutStereotype, 'Coerced to empty')
 
     def testUpperCaseValidValue(self):
-        pyutStereotype: UmlStereotype = UmlStereotype.toEnum('SPECIFICATION')
+        pyutStereotype: Stereotype = Stereotype.toEnum('SPECIFICATION')
 
-        self.assertEqual(UmlStereotype.SPECIFICATION, pyutStereotype, 'Coerced to empty')
+        self.assertEqual(Stereotype.SPECIFICATION, pyutStereotype, 'Coerced to empty')
 
     def testNodeTypeEnum(self):
-        pyutStereotype: UmlStereotype = UmlStereotype.toEnum('NODE type')
+        pyutStereotype: Stereotype = Stereotype.toEnum('NODE type')
 
-        self.assertEqual(UmlStereotype.NODE_TYPE, pyutStereotype, 'Coerced to empty')
+        self.assertEqual(Stereotype.NODE_TYPE, pyutStereotype, 'Coerced to empty')
 
 
 def suite() -> TestSuite:

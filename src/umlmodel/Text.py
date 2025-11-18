@@ -3,13 +3,13 @@ from typing import ClassVar
 
 from dataclasses import dataclass
 
-from umlmodel.UmlObject import UmlObject
+from umlmodel.BaseAttributes import BaseAttributes
 
 
 @dataclass
-class UmlText(UmlObject):
+class Text(BaseAttributes):
 
-    DEFAULT_TEXT: ClassVar = 'Text to display'
+    DEFAULT_TEXT: ClassVar[str] = 'Text to display'
 
     content: str = DEFAULT_TEXT
     """

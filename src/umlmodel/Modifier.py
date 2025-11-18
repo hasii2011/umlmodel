@@ -3,7 +3,7 @@ from dataclasses import dataclass
 
 
 @dataclass(frozen=True)
-class UmlModifier:
+class Modifier:
     """
     Modifier for a method or a parameter.
     These are words like:

@@ -1,12 +1,12 @@
 
 from dataclasses import dataclass
 
-from umlmodel.UmlObject import UmlObject
+from umlmodel.BaseAttributes import BaseAttributes
 from umlmodel.UmlType import UmlType
 
 
 @dataclass
-class UmlParameter(UmlObject):
+class Parameter(BaseAttributes):
 
     type:         UmlType = UmlType("")
     defaultValue: str      = ''

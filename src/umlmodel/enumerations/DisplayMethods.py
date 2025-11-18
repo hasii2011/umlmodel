@@ -2,7 +2,7 @@
 from enum import Enum
 
 
-class UmlDisplayMethods(Enum):
+class DisplayMethods(Enum):
     """
     Use to indicate if a specific class wishes to display certain
     dunder methods

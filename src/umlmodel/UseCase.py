@@ -1,11 +1,11 @@
 
 from dataclasses import dataclass
 
-from umlmodel.UmlLinkedObject import UmlLinkedObject
+from umlmodel.LinkedObject import LinkedObject
 
 
 @dataclass
-class UmlUseCase(UmlLinkedObject):
+class UseCase(LinkedObject):
     """
     """
     def __init__(self, name: str = ''):

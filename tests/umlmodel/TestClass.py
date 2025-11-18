@@ -4,16 +4,16 @@ from unittest import main as unitTestMain
 
 from tests.ProjectTestBase import ProjectTestBase
 
-from umlmodel.UmlClass import UmlClass
-from umlmodel.UmlLinkedObject import UmlLinkedObject
-from umlmodel.UmlObject import UmlObject
-from umlmodel.UmlObject import uniqueIdentifier
+from umlmodel.Class import Class
+from umlmodel.LinkedObject import LinkedObject
+from umlmodel.BaseAttributes import BaseAttributes
+from umlmodel.BaseAttributes import uniqueIdentifier
 
-from umlmodel.enumerations.UmlDisplayParameters import UmlDisplayParameters
-from umlmodel.enumerations.UmlStereotype import UmlStereotype
+from umlmodel.enumerations.DisplayParameters import DisplayParameters
+from umlmodel.enumerations.Stereotype import Stereotype
 
 
-class TestUmlClass(ProjectTestBase):
+class TestClass(ProjectTestBase):
 
     @classmethod
     def setUpClass(cls):
@@ -27,56 +27,55 @@ class TestUmlClass(ProjectTestBase):
 
     def testMultipleInheritance(self):
 
-        pyutClass: UmlClass = UmlClass(name='')
+        pyutClass: Class = Class(name='')
         self.logger.info(f'{len(pyutClass.fields)=}')
 
     def testLinksAndParent(self):
 
-        pyutClass: UmlClass = UmlClass(name='CheckLinks')
+        pyutClass: Class = Class(name='CheckLinks')
         self.assertTrue(len(pyutClass.parents) == 0, 'No parents at instantiation')
         self.assertTrue(len(pyutClass.links) == 0, 'No links at instantiation')
 
     def testBasicPropertiesDisplayParameters(self):
 
-        pyutClass: UmlClass = UmlClass(name='CheckDisplayProperties')
-        self.assertEqual(UmlDisplayParameters.UNSPECIFIED, pyutClass.displayParameters)
+        pyutClass: Class = Class(name='CheckDisplayProperties')
+        self.assertEqual(DisplayParameters.UNSPECIFIED, pyutClass.displayParameters)
 
     def testBasicPropertiesStereotype(self):
 
-        pyutClass: UmlClass = UmlClass(name='CheckStereotype')
-        self.assertEqual(UmlStereotype.NO_STEREOTYPE, pyutClass.stereotype)
+        pyutClass: Class = Class(name='CheckStereotype')
+        self.assertEqual(Stereotype.NO_STEREOTYPE, pyutClass.stereotype)
 
     def testBasicPropertiesDisplayStereotype(self):
 
-        pyutClass: UmlClass = UmlClass(name='CheckDisplayStereotype')
+        pyutClass: Class = Class(name='CheckDisplayStereotype')
         self.assertEqual(True, pyutClass.displayStereoType)
 
     def testBasicPropertiesInterfaces(self):
 
-        pyutClass: UmlClass = UmlClass(name='CheckInterfaces')
+        pyutClass: Class = Class(name='CheckInterfaces')
         self.assertTrue(len(pyutClass.interfaces) == 0, 'Where is my top level attribute`')
 
     def testIdIncrements(self):
 
-        UmlObject.idGenerator = uniqueIdentifier()
-        fakeClass: UmlClass = UmlClass(name='FakeClass')
+        BaseAttributes.idGenerator = uniqueIdentifier()
+        fakeClass: Class = Class(name='FakeClass')
 
         self.assertEqual('FakeClass', fakeClass.name, '')
-        pyutClass1: UmlClass = UmlClass(name='CheckPyutObject')
+        pyutClass1: Class = Class(name='CheckPyutObject')
 
         self.assertTrue(pyutClass1.id != '')
         self.assertTrue(pyutClass1.fileName == '')
 
-        pyutClass2: UmlClass = UmlClass(name='BumpId')
+        pyutClass2: Class = Class(name='BumpId')
         self.assertTrue(pyutClass2.id != pyutClass1.id)
 
     def testLinkedObject(self):
 
-        pyutLinkedObject: UmlLinkedObject = UmlLinkedObject()
+        pyutLinkedObject: LinkedObject = LinkedObject()
 
         self.assertTrue(len(pyutLinkedObject.parents) == 0, 'No parents at instantiation')
         self.assertTrue(len(pyutLinkedObject.links) == 0, 'No links at instantiation')
-
 
 
 def suite() -> TestSuite:
@@ -84,7 +83,7 @@ def suite() -> TestSuite:
 
     testSuite: TestSuite = TestSuite()
 
-    testSuite.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(testCaseClass=TestUmlClass))
+    testSuite.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(testCaseClass=TestClass))
 
     return testSuite
 

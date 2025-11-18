@@ -3,7 +3,7 @@ from unittest import TestSuite
 from unittest import main as unitTestMain
 
 from tests.ProjectTestBase import ProjectTestBase
-from umlmodel.UmlSDInstance import UmlSDInstance
+from umlmodel.SDInstance import SDInstance
 
 
 class TestUmlSDInstance(ProjectTestBase):
@@ -26,7 +26,7 @@ class TestUmlSDInstance(ProjectTestBase):
 
     def testProperties(self):
 
-        pyutSDInstance: UmlSDInstance = UmlSDInstance()
+        pyutSDInstance: SDInstance = SDInstance()
 
         self.assertTrue(pyutSDInstance.name == '', '')
 

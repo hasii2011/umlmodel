@@ -10,9 +10,9 @@ from copy import deepcopy
 
 
 from tests.ProjectTestBase import ProjectTestBase
-from umlmodel.UmlField import UmlField
+from umlmodel.Field import Field
 from umlmodel.UmlType import UmlType
-from umlmodel.enumerations.UmlVisibility import UmlVisibility
+from umlmodel.enumerations.Visibility import Visibility
 
 
 class TestUmlField(ProjectTestBase):
@@ -23,39 +23,39 @@ class TestUmlField(ProjectTestBase):
                                         UmlType(value='float')
                                         ]
     fieldValues:       List[str]      = ['22', 'False', '62.34324']
-    fieldVisibilities: List[UmlVisibility] = [UmlVisibility.PRIVATE,
-                                              UmlVisibility.PUBLIC,
-                                              UmlVisibility.PROTECTED
-                                              ]
+    fieldVisibilities: List[Visibility] = [Visibility.PRIVATE,
+                                           Visibility.PUBLIC,
+                                           Visibility.PROTECTED
+                                           ]
 
     def setUp(self):
         super().setUp()
 
     def testDeepCopyList(self):
 
-        originalFields: List[UmlField] = []
+        originalFields: List[Field] = []
         for x in range(len(TestUmlField.fieldNames)):
-            field: UmlField = UmlField(name=TestUmlField.fieldNames[x],                 # bug in pycharm, fixed in 2025.3
-                                       type=TestUmlField.fieldTypes[x],
-                                       defaultValue=TestUmlField.fieldValues[x],
-                                       visibility=TestUmlField.fieldVisibilities[x]     # bug in pycharm, fixed in 2025.3
-                                       )
+            field: Field = Field(name=TestUmlField.fieldNames[x],  # bug in pycharm, fixed in 2025.3
+                                 type=TestUmlField.fieldTypes[x],
+                                 defaultValue=TestUmlField.fieldValues[x],
+                                 visibility=TestUmlField.fieldVisibilities[x]  # bug in pycharm, fixed in 2025.3
+                                 )
             originalFields.append(field)
         self.logger.info(f'originalFields: {originalFields}')
 
-        dopplegangers: List[UmlField] = deepcopy(originalFields)
+        dopplegangers: List[Field] = deepcopy(originalFields)
         self.logger.info(f'{dopplegangers=}')
 
         for pyutField in dopplegangers:
             self.assertTrue(isinstance(pyutField.type, UmlType), 'Wrong type copied')
-            self.assertTrue(isinstance(pyutField.visibility, UmlVisibility), 'Wrong visibility type copied')
+            self.assertTrue(isinstance(pyutField.visibility, Visibility), 'Wrong visibility type copied')
 
     def testBasicStringRepresentation(self):
 
-        basicField: UmlField = UmlField(name='basicField',
-                                        type=UmlType('int'),
-                                        defaultValue='42',
-                                        visibility=UmlVisibility.PUBLIC)
+        basicField: Field = Field(name='basicField',
+                                  type=UmlType('int'),
+                                  defaultValue='42',
+                                  visibility=Visibility.PUBLIC)
 
         expectedValue: str = '+basicField: int = 42'
         actualValue:   str = basicField.__str__()
@@ -64,9 +64,9 @@ class TestUmlField(ProjectTestBase):
 
     def testNoDefaultValueStringRepresentation(self):
 
-        noDefaultValueField: UmlField = UmlField(name='basicField',
-                                                 type=UmlType('int'),
-                                                 visibility=UmlVisibility.PRIVATE)
+        noDefaultValueField: Field = Field(name='basicField',
+                                           type=UmlType('int'),
+                                           visibility=Visibility.PRIVATE)
 
         expectedValue: str = '-basicField: int'
         actualValue:   str = noDefaultValueField.__str__()

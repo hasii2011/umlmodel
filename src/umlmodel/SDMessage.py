@@ -4,12 +4,12 @@ from logging import getLogger
 
 from dataclasses import dataclass
 
-from umlmodel.UmlLink import UmlLink
-from umlmodel.enumerations.UmlLinkType import UmlLinkType
+from umlmodel.Link import Link
+from umlmodel.enumerations.LinkType import LinkType
 
 
 @dataclass
-class UmlSDMessage(UmlLink):
+class SDMessage(Link):
     message:      str = ''
     sourceY:      int = 0
     destinationY: int = 0
@@ -30,8 +30,8 @@ class UmlSDMessage(UmlLink):
         """
         self.logger: Logger = getLogger(__name__)
 
-        self.logger.debug(f"UmlSDMessage.__init__ {sourceY}, {destinationY}")
-        super().__init__(source=src, destination=dst, linkType=UmlLinkType.SD_MESSAGE)
+        self.logger.debug(f"SDMessage.__init__ {sourceY}, {destinationY}")
+        super().__init__(source=src, destination=dst, linkType=LinkType.SD_MESSAGE)
 
         self.message      = message
         self.sourceY      = sourceY

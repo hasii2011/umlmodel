@@ -4,12 +4,12 @@ from unittest import main as unitTestMain
 
 from tests.ProjectTestBase import ProjectTestBase
 
-from umlmodel.UmlLink import UmlLink
+from umlmodel.Link import Link
 
-from umlmodel.UmlSDInstance import UmlSDInstance
-from umlmodel.UmlSDMessage import UmlSDMessage
+from umlmodel.SDInstance import SDInstance
+from umlmodel.SDMessage import SDMessage
 
-from umlmodel.enumerations.UmlLinkType import UmlLinkType
+from umlmodel.enumerations.LinkType import LinkType
 
 
 class TestUmlLink(ProjectTestBase):
@@ -28,26 +28,26 @@ class TestUmlLink(ProjectTestBase):
 
     def testValidLinkType(self):
 
-        pyutLink: UmlLink = UmlLink(name='ValidUmlLink')
-        linkType: UmlLinkType = UmlLinkType.COMPOSITION
+        pyutLink: Link = Link(name='ValidUmlLink')
+        linkType: LinkType = LinkType.COMPOSITION
 
         pyutLink.linkType = linkType
 
-        expectedLinkType: UmlLinkType = UmlLinkType.COMPOSITION
-        actualLinkType:   UmlLinkType = pyutLink.linkType
+        expectedLinkType: LinkType = LinkType.COMPOSITION
+        actualLinkType:   LinkType = pyutLink.linkType
 
         self.assertEqual(expectedLinkType, actualLinkType, 'Incorrect  valid legacy type support')
 
     def testLinkAssignment(self):
 
-        sourceInstance:      UmlSDInstance = UmlSDInstance(instanceName='SourceInstance')
-        destinationInstance: UmlSDInstance = UmlSDInstance(instanceName='DestinationInstance')
+        sourceInstance:      SDInstance = SDInstance(instanceName='SourceInstance')
+        destinationInstance: SDInstance = SDInstance(instanceName='DestinationInstance')
 
-        message: UmlSDMessage = UmlSDMessage(message='callback')
+        message: SDMessage = SDMessage(message='callback')
         message.source      = sourceInstance
         message.destination = destinationInstance
 
-        checkSource: UmlSDInstance = message.source
+        checkSource: SDInstance = message.source
         self.assertIsNotNone(checkSource, 'Did we pass')
 
 

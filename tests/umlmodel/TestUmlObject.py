@@ -2,8 +2,8 @@
 from unittest import TestSuite
 from unittest import main as unitTestMain
 
-from umlmodel.UmlObject import UmlObject
-from umlmodel.UmlObject import uniqueIdentifier
+from umlmodel.BaseAttributes import BaseAttributes
+from umlmodel.BaseAttributes import uniqueIdentifier
 
 from tests.ProjectTestBase import ProjectTestBase
 
@@ -14,13 +14,13 @@ class TestUmlObject(ProjectTestBase):
     def setUp(self):
 
         super().setUp()
-        UmlObject.idGenerator = uniqueIdentifier()
+        BaseAttributes.idGenerator = uniqueIdentifier()
 
     def tearDown(self):
         pass
 
     def testNoName(self):
-        umlObject: UmlObject = UmlObject()
+        umlObject: BaseAttributes = BaseAttributes()
 
         expectedSize: int = 0
         actualSize:   int = umlObject.name.__len__()
@@ -29,7 +29,7 @@ class TestUmlObject(ProjectTestBase):
 
     def testNoNameValue(self):
 
-        umlObject: UmlObject = UmlObject()
+        umlObject: BaseAttributes = BaseAttributes()
 
         actualName:     str = umlObject.name
 
@@ -45,7 +45,7 @@ class TestUmlObject(ProjectTestBase):
         providedName: str = 'El Gato Malo'
         nameLength:   int = len(providedName)
 
-        umlObject: UmlObject = UmlObject(providedName)
+        umlObject: BaseAttributes = BaseAttributes(providedName)
 
         expectedLength: int = nameLength
         actualLength:   int = len(umlObject.name)

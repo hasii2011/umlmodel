@@ -2,7 +2,7 @@
 from enum import Enum
 
 
-class UmlDisplayParameters(Enum):
+class DisplayParameters(Enum):
     """
     """
 
