@@ -8,7 +8,7 @@ from umlmodel.BaseAttributes import uniqueIdentifier
 from tests.ProjectTestBase import ProjectTestBase
 
 
-class TestUmlObject(ProjectTestBase):
+class TestBaseAttributes(ProjectTestBase):
     """
     """
     def setUp(self):
@@ -59,7 +59,7 @@ def suite() -> TestSuite:
 
     testSuite: TestSuite = TestSuite()
 
-    testSuite.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(testCaseClass=TestUmlObject))
+    testSuite.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(testCaseClass=TestBaseAttributes))
 
     return testSuite
 

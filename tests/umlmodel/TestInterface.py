@@ -8,7 +8,7 @@ from tests.ProjectTestBase import ProjectTestBase
 from umlmodel.Interface import Interface
 
 
-class TestUmlInterface(ProjectTestBase):
+class TestInterface(ProjectTestBase):
     """
     """
 
@@ -47,7 +47,7 @@ def suite() -> TestSuite:
 
     testSuite: TestSuite = TestSuite()
 
-    testSuite.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(testCaseClass=TestUmlInterface))
+    testSuite.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(testCaseClass=TestInterface))
 
     return testSuite
 

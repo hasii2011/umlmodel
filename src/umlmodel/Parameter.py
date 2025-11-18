@@ -2,14 +2,18 @@
 from dataclasses import dataclass
 
 from umlmodel.BaseAttributes import BaseAttributes
-from umlmodel.UmlType import UmlType
 
+from umlmodel.UmlType import UmlType
+from umlmodel.FieldType import FieldType
+from umlmodel.ParameterType import ParameterType
+
+Type = ParameterType | FieldType | UmlType
 
 @dataclass
 class Parameter(BaseAttributes):
 
-    type:         UmlType = UmlType("")
-    defaultValue: str      = ''
+    type:         Type = UmlType('')
+    defaultValue: str  = ''
 
     def __str__(self) -> str:
         """

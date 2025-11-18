@@ -8,7 +8,7 @@ from umlmodel.Parameter import Parameter
 from umlmodel.UmlType import UmlType
 
 
-class TestUmlParameter(ProjectTestBase):
+class TestParameter(ProjectTestBase):
     """
     """
     def setUp(self):
@@ -65,7 +65,7 @@ def suite() -> TestSuite:
 
     testSuite: TestSuite = TestSuite()
 
-    testSuite.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(testCaseClass=TestUmlParameter))
+    testSuite.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(testCaseClass=TestParameter))
 
     return testSuite
 

@@ -8,6 +8,7 @@ from dataclasses import field
 from umlmodel.Modifier import Modifier
 from umlmodel.BaseAttributes import BaseAttributes
 from umlmodel.Parameter import Parameter
+from umlmodel.ReturnType import ReturnType
 from umlmodel.UmlType import UmlType
 
 from umlmodel.enumerations.Visibility import Visibility
@@ -47,7 +48,7 @@ class Method(BaseAttributes):
     modifiers:  Modifiers  = field(default_factory=modifiersFactory)
 
     visibility: Visibility  = Visibility.PUBLIC
-    returnType: UmlType     = UmlType('')
+    returnType: ReturnType  = ReturnType('')
     isProperty: bool        = False
     sourceCode: SourceCode  = field(default_factory=sourceCodeFactory)
 

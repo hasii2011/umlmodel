@@ -1,27 +1,28 @@
 
 from typing import List
 
-
 from unittest import TestSuite
 
 from unittest import main as unitTestMain
 
 from copy import deepcopy
 
-
 from tests.ProjectTestBase import ProjectTestBase
+
 from umlmodel.Field import Field
+from umlmodel.FieldType import FieldType
 from umlmodel.UmlType import UmlType
+
 from umlmodel.enumerations.Visibility import Visibility
 
 
 class TestUmlField(ProjectTestBase):
 
-    fieldNames:        List[str]     = ['field1', 'field2', 'field3']
-    fieldTypes:        List[UmlType] = [UmlType(value='int'),
-                                        UmlType(value='bool'),
-                                        UmlType(value='float')
-                                        ]
+    fieldNames:        List[str]       = ['field1', 'field2', 'field3']
+    fieldTypes:        List[FieldType] = [FieldType(value='int'),
+                                          FieldType(value='bool'),
+                                          FieldType(value='float')
+                                          ]
     fieldValues:       List[str]      = ['22', 'False', '62.34324']
     fieldVisibilities: List[Visibility] = [Visibility.PRIVATE,
                                            Visibility.PUBLIC,
@@ -35,10 +36,10 @@ class TestUmlField(ProjectTestBase):
 
         originalFields: List[Field] = []
         for x in range(len(TestUmlField.fieldNames)):
-            field: Field = Field(name=TestUmlField.fieldNames[x],  # bug in pycharm, fixed in 2025.3
+            field: Field = Field(name=TestUmlField.fieldNames[x],               # bug in pycharm, fixed in 2025.3
                                  type=TestUmlField.fieldTypes[x],
                                  defaultValue=TestUmlField.fieldValues[x],
-                                 visibility=TestUmlField.fieldVisibilities[x]  # bug in pycharm, fixed in 2025.3
+                                 visibility=TestUmlField.fieldVisibilities[x]   # bug in pycharm, fixed in 2025.3
                                  )
             originalFields.append(field)
         self.logger.info(f'originalFields: {originalFields}')
@@ -53,7 +54,7 @@ class TestUmlField(ProjectTestBase):
     def testBasicStringRepresentation(self):
 
         basicField: Field = Field(name='basicField',
-                                  type=UmlType('int'),
+                                  type=FieldType('int'),
                                   defaultValue='42',
                                   visibility=Visibility.PUBLIC)
 
@@ -65,7 +66,7 @@ class TestUmlField(ProjectTestBase):
     def testNoDefaultValueStringRepresentation(self):
 
         noDefaultValueField: Field = Field(name='basicField',
-                                           type=UmlType('int'),
+                                           type=FieldType('int'),
                                            visibility=Visibility.PRIVATE)
 
         expectedValue: str = '-basicField: int'

@@ -6,7 +6,12 @@ from tests.ProjectTestBase import ProjectTestBase
 from umlmodel.Method import SourceCode
 from umlmodel.Method import Method
 from umlmodel.Method import Parameters
+
 from umlmodel.Parameter import Parameter
+from umlmodel.ParameterType import ParameterType
+
+from umlmodel.ReturnType import ReturnType
+
 from umlmodel.UmlType import UmlType
 
 
@@ -31,27 +36,27 @@ class TestUmlMethod(ProjectTestBase):
 
     def testStringMethodWithParametersRepresentation(self):
 
-        pyutMethod: Method = self._pyutMethod
-        pyutMethod.returnType = UmlType('float')
+        method: Method = self._pyutMethod
+        method.returnType = ReturnType('float')
 
-        pyutMethod.parameters = self._makeParameters()
+        method.parameters = self._makeParameters()
 
         defaultName:            str = 'methodName'
         expectedRepresentation: str = f'+{defaultName}(intParam: int = 0, floatParam: float = 32.0): float'
-        actualRepresentation:   str = pyutMethod.methodWithParameters()
+        actualRepresentation:   str = method.methodWithParameters()
 
         self.assertEqual(expectedRepresentation, actualRepresentation, 'Oops this does not match')
 
     def testStringMethodWithoutParametersRepresentation(self):
 
-        pyutMethod:     Method = self._pyutMethod
-        pyutMethod.returnType = UmlType('float')
+        method: Method = self._pyutMethod
+        method.returnType = ReturnType('float')
 
-        pyutMethod.parameters = self._makeParameters()
+        method.parameters = self._makeParameters()
 
         defaultName:            str = 'methodName'
         expectedRepresentation: str = f'+{defaultName}(): float'
-        actualRepresentation:   str = pyutMethod.methodWithoutParameters()
+        actualRepresentation:   str = method.methodWithoutParameters()
 
         self.assertEqual(expectedRepresentation, actualRepresentation, 'Oops this does not match')
 
@@ -74,25 +79,27 @@ class TestUmlMethod(ProjectTestBase):
 
     def testStashSourceCode(self):
 
-        pyutMethod:        Method = self._generateAMethod()
+        method:            Method = self._generateAMethod()
         expectedLineCount: int = 5
-        actualLineCount:   int = len(pyutMethod.sourceCode)
+        actualLineCount:   int = len(method.sourceCode)
         self.assertEqual(expectedLineCount, actualLineCount, 'Method source code not accurate')
 
     def testChangeSourceCode(self):
-        pyutMethod:        Method = self._generateAMethod()
+
+        method: Method = self._generateAMethod()
         #
         # This is NOT the recommended way to update the source code
         #
-        pyutMethod.sourceCode.insert(2, '# I am a comment')
+        method.sourceCode.insert(2, '# I am a comment')
         expectedLineCount: int = 6
-        actualLineCount:   int = len(pyutMethod.sourceCode)
+        actualLineCount:   int = len(method.sourceCode)
         self.assertEqual(expectedLineCount, actualLineCount, 'Method source code not accurate')
 
     def _generateAMethod(self) -> Method:
-        pyutMethod: Method    = Method(name='OzzeeElGatoDiablo')
 
-        pyutMethod.sourceCode = SourceCode(
+        method: Method = Method(name='OzzeeElGatoDiablo')
+
+        method.sourceCode = SourceCode(
             [
                 'weLeft:           bool = True',
                 'isOzzeeAGoodGato: bool = False',
@@ -101,13 +108,13 @@ class TestUmlMethod(ProjectTestBase):
                 'return isOzzeeAGoodGato'
             ]
         )
-        return pyutMethod
+        return method
 
     def _makeParameters(self) -> Parameters:
 
-        pyutParameter1: Parameter  = Parameter(name='intParam', type=UmlType("int"), defaultValue='0')
-        pyutParameter2: Parameter  = Parameter(name='floatParam', type=UmlType("float"), defaultValue='32.0')
-        parameters:     Parameters = Parameters([pyutParameter1, pyutParameter2])
+        parameter1: Parameter  = Parameter(name='intParam',   type=ParameterType("int"), defaultValue='0')
+        parameter2: Parameter  = Parameter(name='floatParam', type=ParameterType("float"), defaultValue='32.0')
+        parameters:     Parameters = Parameters([parameter1, parameter2])
 
         return parameters
 

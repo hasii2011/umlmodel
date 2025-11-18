@@ -7,7 +7,7 @@ from tests.ProjectTestBase import ProjectTestBase
 from umlmodel.UseCase import UseCase
 
 
-class TestUmlCase(ProjectTestBase):
+class TestUseCase(ProjectTestBase):
 
     @classmethod
     def setUpClass(cls):
@@ -35,7 +35,7 @@ def suite() -> TestSuite:
 
     testSuite: TestSuite = TestSuite()
 
-    testSuite.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(testCaseClass=TestUmlCase))
+    testSuite.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(testCaseClass=TestUseCase))
 
     return testSuite
 

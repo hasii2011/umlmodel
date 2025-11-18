@@ -12,7 +12,7 @@ from umlmodel.SDMessage import SDMessage
 from umlmodel.enumerations.LinkType import LinkType
 
 
-class TestUmlLink(ProjectTestBase):
+class TestLink(ProjectTestBase):
     """
     """
     def setUp(self):
@@ -57,7 +57,7 @@ def suite() -> TestSuite:
 
     testSuite: TestSuite = TestSuite()
 
-    testSuite.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(testCaseClass=TestUmlLink))
+    testSuite.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(testCaseClass=TestLink))
 
     return testSuite
 

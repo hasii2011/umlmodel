@@ -6,6 +6,7 @@ from dataclasses import dataclass
 class UmlType:
     """
     How method and return types are represented
+    This class is not meant for direct use
     """
     value: str = ''
 

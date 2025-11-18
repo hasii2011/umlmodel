@@ -6,7 +6,7 @@ from tests.ProjectTestBase import ProjectTestBase
 from umlmodel.SDInstance import SDInstance
 
 
-class TestUmlSDInstance(ProjectTestBase):
+class TestSDInstance(ProjectTestBase):
     """
     You need to change the name of this class to Test`xxxx`
     Where `xxxx` is the name of the class that you want to test.
@@ -39,7 +39,7 @@ def suite() -> TestSuite:
 
     testSuite: TestSuite = TestSuite()
 
-    testSuite.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(testCaseClass=TestUmlSDInstance))
+    testSuite.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(testCaseClass=TestSDInstance))
 
     return testSuite
 

@@ -7,26 +7,26 @@ from unittest import TestSuite
 from copy import deepcopy
 
 from tests.ProjectTestBase import ProjectTestBase
-from umlmodel.UmlType import UmlType
+from umlmodel.ReturnType import ReturnType
 
 
-class TestUmlType(ProjectTestBase):
+class TestReturnType(ProjectTestBase):
 
     def setUp(self):
         super().setUp()
 
-    def testDeepCopyPyutTypes(self):
+    def testDeepCopyReturnType(self):
 
         typeValues:    List[str]      = ['int', 'bool', 'float']
-        originalTypes: List[UmlType] = []
+        originalTypes: List[ReturnType] = []
 
         for aValue in typeValues:
-            pyutType: UmlType = UmlType(value=aValue)
-            originalTypes.append(pyutType)
+            returnType: ReturnType = ReturnType(value=aValue)
+            originalTypes.append(returnType)
         self.logger.info(f'{originalTypes=}')
 
         # noinspection SpellCheckingInspection
-        doppleGangers: List[UmlType] = deepcopy(originalTypes)
+        doppleGangers: List[ReturnType] = deepcopy(originalTypes)
 
         # noinspection SpellCheckingInspection
         self.logger.info(f'{doppleGangers=}')
@@ -42,7 +42,7 @@ def suite() -> TestSuite:
 
     testSuite: TestSuite = TestSuite()
 
-    testSuite.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(testCaseClass=TestUmlType))
+    testSuite.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(testCaseClass=TestReturnType))
 
     return testSuite
 
