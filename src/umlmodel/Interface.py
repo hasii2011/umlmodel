@@ -8,7 +8,7 @@ from dataclasses import dataclass
 from umlmodel.ClassCommon import ClassCommon
 from umlmodel.ModelTypes import ClassName
 from umlmodel.ModelTypes import Implementors
-from umlmodel.BaseAttributes import BaseAttributes
+from umlmodel.UmlModelBase import UmlModelBase
 
 
 def implementorsFactory() -> Implementors:
@@ -16,7 +16,7 @@ def implementorsFactory() -> Implementors:
 
 
 @dataclass
-class Interface(BaseAttributes, ClassCommon):
+class Interface(UmlModelBase, ClassCommon):
 
     def __init__(self, name: str = ''):
         """

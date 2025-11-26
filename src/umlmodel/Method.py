@@ -6,7 +6,7 @@ from dataclasses import dataclass
 from dataclasses import field
 
 from umlmodel.Modifier import Modifier
-from umlmodel.BaseAttributes import BaseAttributes
+from umlmodel.UmlModelBase import UmlModelBase
 from umlmodel.Parameter import Parameter
 from umlmodel.ReturnType import ReturnType
 from umlmodel.UmlType import UmlType
@@ -31,7 +31,7 @@ def parametersFactory() -> Parameters:
 
 
 @dataclass
-class Method(BaseAttributes):
+class Method(UmlModelBase):
     """
     A method representation.
 

@@ -2,25 +2,25 @@
 from unittest import TestSuite
 from unittest import main as unitTestMain
 
-from umlmodel.BaseAttributes import BaseAttributes
-from umlmodel.BaseAttributes import uniqueIdentifier
+from umlmodel.UmlModelBase import UmlModelBase
+from umlmodel.UmlModelBase import uniqueIdentifier
 
 from tests.ProjectTestBase import ProjectTestBase
 
 
-class TestBaseAttributes(ProjectTestBase):
+class TestUmlBase(ProjectTestBase):
     """
     """
     def setUp(self):
 
         super().setUp()
-        BaseAttributes.idGenerator = uniqueIdentifier()
+        UmlModelBase.idGenerator = uniqueIdentifier()
 
     def tearDown(self):
         pass
 
     def testNoName(self):
-        umlObject: BaseAttributes = BaseAttributes()
+        umlObject: UmlModelBase = UmlModelBase()
 
         expectedSize: int = 0
         actualSize:   int = umlObject.name.__len__()
@@ -29,7 +29,7 @@ class TestBaseAttributes(ProjectTestBase):
 
     def testNoNameValue(self):
 
-        umlObject: BaseAttributes = BaseAttributes()
+        umlObject: UmlModelBase = UmlModelBase()
 
         actualName:     str = umlObject.name
 
@@ -45,7 +45,7 @@ class TestBaseAttributes(ProjectTestBase):
         providedName: str = 'El Gato Malo'
         nameLength:   int = len(providedName)
 
-        umlObject: BaseAttributes = BaseAttributes(providedName)
+        umlObject: UmlModelBase = UmlModelBase(providedName)
 
         expectedLength: int = nameLength
         actualLength:   int = len(umlObject.name)
@@ -59,7 +59,7 @@ def suite() -> TestSuite:
 
     testSuite: TestSuite = TestSuite()
 
-    testSuite.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(testCaseClass=TestBaseAttributes))
+    testSuite.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(testCaseClass=TestUmlBase))
 
     return testSuite
 

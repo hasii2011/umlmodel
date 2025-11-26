@@ -14,7 +14,7 @@ def uniqueIdentifier() -> Generator[str, None, None]:
 
 
 @dataclass
-class BaseAttributes:
+class UmlModelBase:
     idGenerator: ClassVar[Generator[str, None, None]] = uniqueIdentifier()
 
     name:     str = ''
@@ -22,4 +22,4 @@ class BaseAttributes:
     fileName: str = ''
 
     def __post_init__(self):
-        self.id   = next(BaseAttributes.idGenerator)
+        self.id   = next(UmlModelBase.idGenerator)

@@ -6,8 +6,8 @@ from tests.ProjectTestBase import ProjectTestBase
 
 from umlmodel.Class import Class
 from umlmodel.LinkedObject import LinkedObject
-from umlmodel.BaseAttributes import BaseAttributes
-from umlmodel.BaseAttributes import uniqueIdentifier
+from umlmodel.UmlModelBase import UmlModelBase
+from umlmodel.UmlModelBase import uniqueIdentifier
 
 from umlmodel.enumerations.DisplayParameters import DisplayParameters
 from umlmodel.enumerations.Stereotype import Stereotype
@@ -58,7 +58,7 @@ class TestClass(ProjectTestBase):
 
     def testIdIncrements(self):
 
-        BaseAttributes.idGenerator = uniqueIdentifier()
+        UmlModelBase.idGenerator = uniqueIdentifier()
         fakeClass: Class = Class(name='FakeClass')
 
         self.assertEqual('FakeClass', fakeClass.name, '')

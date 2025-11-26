@@ -1,7 +1,7 @@
 
 from dataclasses import dataclass
 
-from umlmodel.BaseAttributes import BaseAttributes
+from umlmodel.UmlModelBase import UmlModelBase
 
 from umlmodel.UmlType import UmlType
 from umlmodel.FieldType import FieldType
@@ -10,7 +10,7 @@ from umlmodel.ParameterType import ParameterType
 Type = ParameterType | FieldType | UmlType
 
 @dataclass
-class Parameter(BaseAttributes):
+class Parameter(UmlModelBase):
 
     type:         Type = UmlType('')
     defaultValue: str  = ''

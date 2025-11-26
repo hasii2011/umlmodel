@@ -8,7 +8,7 @@ from dataclasses import field
 
 from umlmodel.Link import Link
 from umlmodel.Link import Links
-from umlmodel.BaseAttributes import BaseAttributes
+from umlmodel.UmlModelBase import UmlModelBase
 
 
 def linksFactory() -> Links:
@@ -20,7 +20,7 @@ def parentsFactory() -> List[Any]:
 
 
 @dataclass
-class LinkedObject(BaseAttributes):
+class LinkedObject(UmlModelBase):
     """
     An object which can be connected to another one.
 

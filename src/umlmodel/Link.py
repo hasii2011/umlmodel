@@ -11,7 +11,7 @@ from logging import getLogger
 
 from dataclasses import dataclass
 
-from umlmodel.BaseAttributes import BaseAttributes
+from umlmodel.UmlModelBase import UmlModelBase
 from umlmodel.enumerations.LinkType import LinkType
 
 if TYPE_CHECKING:
@@ -31,7 +31,7 @@ NONE_LINK_DESTINATION: LinkDestination = cast(LinkDestination, None)
 
 
 @dataclass
-class Link(BaseAttributes):
+class Link(UmlModelBase):
     """
     A standard link between a classes or Note.
 
