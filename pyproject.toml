@@ -52,7 +52,3 @@ where = ['src']
 
 [tool.setuptools.dynamic]
 version = {attr = 'umlmodel.__version__'}
-
-[project.scripts]
-
-pyfabricate = "umlmodel.MainClass:commandHandler"
