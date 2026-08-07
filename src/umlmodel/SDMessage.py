@@ -10,14 +10,17 @@ from umlmodel.enumerations.LinkType import LinkType
 
 @dataclass
 class SDMessage(Link):
+    """
+    Represents a message exchange link between two instances in a UML Sequence Diagram.
+
+    Inherits from Link (of type SD_MESSAGE) and maintains the message label along with
+    the vertical (Y) offsets on the source and destination lifelines.
+    """
     message:      str = ''
     sourceY:      int = 0
     destinationY: int = 0
-    """
-    A message lifeline between two SDInstances.
 
-    """
-    def __init__(self, message: str = "", src=None, sourceY: int = 0, dst=None, destinationY: int = 0):
+    def __init__(self, message: str = '', src=None, sourceY: int = 0, dst=None, destinationY: int = 0):
 
         """
 

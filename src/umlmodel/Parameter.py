@@ -11,7 +11,13 @@ Type = ParameterType | FieldType | UmlType
 
 @dataclass
 class Parameter(UmlModelBase):
+    """
+    Represents a parameter in a UML model, containing its name, type, and
+    an optional default value.
 
+    It formats itself to a standard UML parameter representation
+    (e.g., `name: type = defaultValue`).
+    """
     type:         Type = UmlType('')
     defaultValue: str  = ''
 

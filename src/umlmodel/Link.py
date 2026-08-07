@@ -33,7 +33,7 @@ NONE_LINK_DESTINATION: LinkDestination = cast(LinkDestination, None)
 @dataclass
 class Link(UmlModelBase):
     """
-    A standard link between a classes or Note.
+    A standard link between classes or Note.
 
     A UmlLink represents a link between a class, another class or a note in a UML diagram.
 

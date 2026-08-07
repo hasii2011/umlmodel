@@ -15,6 +15,13 @@ def uniqueIdentifier() -> Generator[str, None, None]:
 
 @dataclass
 class UmlModelBase:
+    """
+    Base dataclass for all UML model elements.
+
+    Provides foundational attributes including a name, source code
+    filename, and a unique, human-readable ID generated automatically
+    during post-initialization.
+    """
     idGenerator: ClassVar[Generator[str, None, None]] = uniqueIdentifier()
 
     name:     str = ''

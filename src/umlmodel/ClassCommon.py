@@ -23,8 +23,10 @@ def fieldsFactory() -> Fields:
 class ClassCommon:
     """
     These are the attributes shared between a Class and an Interface
-    """
 
+    Manages collections of fields and methods, stereotype settings, and
+    visibility flags (e.g., whether to display fields/methods/stereotypes).
+    """
     description: str = ''
     showMethods: bool = True
     showFields:  bool = True

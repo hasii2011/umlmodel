@@ -9,6 +9,10 @@ from umlmodel.LinkedObject import LinkedObject
 
 @dataclass
 class Note(LinkedObject):
+    """
+    The Note class represents a UML annotation or note containing text content,
+    with support for linking to other model elements
+    """
 
     content: str = ''
 

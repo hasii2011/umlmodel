@@ -17,7 +17,13 @@ def implementorsFactory() -> Implementors:
 
 @dataclass
 class Interface(UmlModelBase, ClassCommon):
+    """
+    Represents a UML Interface model element.
 
+    Inherits core model properties from UmlModelBase and structural
+    features (fields, methods, stereotypes) from ClassCommon, while
+    additionally managing a list of implementing class names.
+    """
     def __init__(self, name: str = ''):
         """
 
