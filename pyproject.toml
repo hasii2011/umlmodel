@@ -13,10 +13,10 @@ maintainers = [{name = 'Humberto A. Sanchez II', email = 'Humberto.A.Sanchez.II@
 keywords = ['umldiagrammer,python,data model']
 
 classifiers = [
-  "Programming Language :: Python",
-  "Intended Audience :: Developers",
-  "Operating System :: macOS :: Mac OS X",
-  "Topic :: Software Development :: Libraries :: Python Modules",
+    "Programming Language :: Python",
+    "Intended Audience :: Developers",
+    "Operating System :: MacOS :: MacOS X",
+    "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 
 dependencies = [
