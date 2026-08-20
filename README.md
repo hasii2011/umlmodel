@@ -1,12 +1,12 @@
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/hasii2011/umlmodel/tree/master.svg?style=shield)](https://dl.circleci.com/status-badge/redirect/gh/hasii2011/umlmodel/tree/master)
 [![PyPI version](https://badge.fury.io/py/umlmodel.svg)](https://badge.fury.io/py/umlmodel)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/hasii2011/umlmodel/graphs/commit-activity)
 
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
 
 # Introduction
 
-This project provides a Python data model for creating and manipulating UML diagrams. It's the foundational data model for the [UML Shapes module.](https://github.com/hasii2011/umlshapes)
+This project provides a Python data model for creating and manipulating UML diagrams. It is the foundational data model for the [UML Shapes module](https://github.com/hasii2011/umlshapes).
 
 # Installation
 
@@ -57,7 +57,7 @@ field1: Field = Field(name='my_string',
                type=FieldType('str'),
                visibility=Visibility.PUBLIC,
                defaultValue='"hello"')
-field2:Field = Field(name='_my_private_int',
+field2: Field = Field(name='_my_private_int',
                type=FieldType('int'),
                visibility=Visibility.PRIVATE)
 
@@ -89,7 +89,7 @@ modelClass: Class = Class(name='MyClass')
 method: Method = Method(name='my_method', visibility=Visibility.PUBLIC)
 
 # Add a parameter
-parameter: Paraeter = Parameter(name='value', type=ParameterType('int'), defaultValue='0')
+parameter: Parameter = Parameter(name='value', type=ParameterType('int'), defaultValue='0')
 method.addParameter(parameter)
 
 # Set a return type
@@ -110,7 +110,7 @@ Written by <a href="mailto:humberto.a.sanchez.ii@gmail.com?subject=Hello Humbert
 
 
 ## Note
-For all kind of problems, requests, enhancements, bug reports, etc., please drop me an e-mail.
+For all kinds of problems, requests, enhancements, bug reports, etc., please drop me an e-mail.
 
 
 ------

@@ -1,7 +1,7 @@
 
+from typing import Optional
+from typing import cast
 from enum import Enum
-
-DEBUG_STEREOTYPE: bool = False
 
 
 class Stereotype(Enum):
@@ -39,7 +39,7 @@ class Stereotype(Enum):
     NO_STEREOTYPE        = 'noStereotype'
 
     @classmethod
-    def toEnum(cls, strValue: str) -> 'Stereotype':
+    def toEnum(cls, strValue: Optional[str]) -> 'Stereotype':
         """
         Converts the input string to the appropriate stereotype
 
@@ -49,26 +49,16 @@ class Stereotype(Enum):
         Returns:  The stereotype enumeration;  Empty strings, multi-spaces strings,
         invalid & None values return Stereotype.NO_STEREOTYPE
         """
-
         if strValue is None:
-            canonicalStr: str = ''  # Force to no stereotype
-        else:
-            canonicalStr = strValue.strip(' ').lower()
+            return cls.NO_STEREOTYPE
 
-        try:
-            # noinspection SpellCheckingInspection
-            match canonicalStr:
-                case 'buildcomponent':
-                    stereotype: Stereotype = Stereotype.BUILD_COMPONENT
-                case 'implementationclass':
-                    stereotype = Stereotype.IMPLEMENTATION_CLASS
-                case 'nostereotype':
-                    stereotype = Stereotype.NO_STEREOTYPE
-                case _:
-                    stereotype = Stereotype(canonicalStr)
-        except (ValueError, Exception):
-            if DEBUG_STEREOTYPE is True:
-                print(f'`{canonicalStr}` coerced to {Stereotype.NO_STEREOTYPE}')
-            stereotype = Stereotype.NO_STEREOTYPE
+        canonicalStr: str = strValue.strip(' ').lower()
+        if not canonicalStr:
+            return cls.NO_STEREOTYPE
 
-        return stereotype
+        for member in cls:
+            memberVal: Stereotype = cast(Stereotype, member)
+            if memberVal.value.lower() == canonicalStr or memberVal.name.lower() == canonicalStr:
+                return memberVal
+
+        return cls.NO_STEREOTYPE
