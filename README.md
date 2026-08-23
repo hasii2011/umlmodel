@@ -1,4 +1,4 @@
-[![CircleCI](https://dl.circleci.com/status-badge/img/gh/hasii2011/umlmodel/tree/master.svg?style=shield)](https://dl.circleci.com/status-badge/redirect/gh/hasii2011/umlmodel/tree/master)
+[![CI](https://github.com/hasii2011/umlmodel/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/hasii2011/umlmodel/actions/workflows/ci.yml)
 [![PyPI version](https://badge.fury.io/py/umlmodel.svg)](https://badge.fury.io/py/umlmodel)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/hasii2011/umlmodel/graphs/commit-activity)
 
