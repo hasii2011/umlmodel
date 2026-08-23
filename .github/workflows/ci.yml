@@ -36,7 +36,7 @@ jobs:
 
       - name: Run Unittest Suite
         env:
-            PYTHONPATH: .
+            PYTHONPATH: src:.
         run: |
           python -m unittest discover -s tests -p "Test*.py" -v
 
