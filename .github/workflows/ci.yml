@@ -41,4 +41,3 @@ jobs:
       - name: Verify Package Build
         run: |
           python -m build
-EOF
