@@ -13,7 +13,7 @@ def uniqueIdentifier() -> Generator[str, None, None]:
         yield generate_id()
 
 
-@dataclass
+@dataclass(kw_only=True)
 class UmlModelBase:
     """
     Base dataclass for all UML model elements.

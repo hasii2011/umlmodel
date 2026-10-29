@@ -20,5 +20,4 @@ class SDInstance(UmlModelBase):
     representation type (e.g., Actor or Class).
     """
     instanceName:           str = 'Unnamed instance'
-    instanceLifeLineLength: int = 200
     instanceGraphicalType:  SDInstanceType = SDInstanceType.INSTANCE_TYPE_CLASS

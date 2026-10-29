@@ -45,7 +45,7 @@ class TestUmlBase(ProjectTestBase):
         providedName: str = 'El Gato Malo'
         nameLength:   int = len(providedName)
 
-        umlObject: UmlModelBase = UmlModelBase(providedName)
+        umlObject: UmlModelBase = UmlModelBase(name=providedName)
 
         expectedLength: int = nameLength
         actualLength:   int = len(umlObject.name)

@@ -70,7 +70,7 @@ class Link(UmlModelBase):
             source:                 The source of the link
             destination:            The destination of the link
         """
-        super().__init__(name)
+        super().__init__(name=name)
 
         self.logger: Logger       = getLogger(__name__)
 
